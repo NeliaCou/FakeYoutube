@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #5a5a5a;
+}
+
+img {
+  cursor: pointer;
+}
+
+#youTube-logo {
+  height: 32px;
+}
+
+#menu {
+  height: 15px;
+  margin-right: 25px;
+}
+
+#profil-logo {
+  height: 30px;
+  width: auto;
+  border-radius: 50%;
+  background-color: black;
+  margin-right: 0;
+}
+
+.flex-div {
+  display: flex;
+  align-items: center;
+}
+
+nav {
+  padding: 10px 2%;
+  justify-content: space-between;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-right img {
+  width: 25px;
+  margin-right: 8px;
+}
+
+#micro {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  margin-left: 15px;
+  padding: 5px;
+  object-fit: contain;
+  background-color: #e5e5e5;
+}
+
+input {
+  width: 400px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.search-input {
+  border: 1px solid gray;
+  border-radius: 20px;
+}
+
+/* main */
+
+.container {
+  background: #f9f9f9;
+  padding-left: 17%;
+  padding-right: 17%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.thumbnail {
+  width: 100%;
+  border-radius: 5%;
+}
+
+.card-header .flex-div {
+  align-items: flex-start;
+  margin-top: 7px;
+}
+
+.cards {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card {
+  border-radius: 10px;
+  width: 350px;
+  height: 18rem;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.card-img {
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-image: url("http://placekitten.com/200/300");
+  height: 200px;
+  width: 100%;
+}
+.card-body {
+  padding: 10px 20px;
+}
+.card-body h2 {
+  margin: 10px 0px;
+}
+.card-button {
+  border: none;
+  border-radius: 10px;
+  height: 50px;
+  background-color: lightblue;
+  width: 100%;
+}
+
+.youtuber-logo {
+  border-radius: 50%;
+  height: 35px;
+}
+
+.chanel-title {
+  color: black;
+  padding-left: 12px;
+}
+
+.infoCard {
+  color: #666565eb;
+  padding-left: 12px;
+}
+
+/* Filter by category */
+
+.div-filter-by-category {
+  justify-content: center;
+}
+
+.filter-by-category {
+  margin-left: 12px;
+  margin-right: 12px;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  padding: 8px;
+  font-weight: bold;
+  font-size: 14px;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake YouTube</title>
+    <link rel="icon" type="image/x-icon" href="asset/navbar/youtube-logo.png">
+    <link rel="stylesheet" href="style.css" />
+    <script type="module"src="./videoCard.js" defer></script>
+    <script type="module" src="./filterByCategory.js" defer></script>
+  </head>
+
+  <body>
+    <nav class="flex-div">
+      <div class="nav-left flex-div">
+        <img src="assets/navbar/menu.png" id="menu" alt="menu barre">
+        <img src="assets//navbar/youtube-logo.png" id="youTube-logo" alt="Youtube logo">
+      </div>
+
+      <div class="nav-middle flex-div">
+        <div class="search-box flex-div">
+          <div class="search-input flex-div">
+          <input type="text" placeholder="Search">
+          <img src="assets/navbar/magnifyingGlass.png" alt="search logo">
+        </div>
+          <img src="assets/navbar/voice-search.png" id="micro" alt="voice search logo">
+        </div>
+      </div>
+
+      <div class="nav-right flex-div">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" style="pointer-events: none; display: inherit; width: 100%; height: 100%;" viewBox="0 0 24 24" width="24" focusable="false"><path d="M14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2zm3-7H3v12h14v-6.39l4 1.83V8.56l-4 1.83V6m1-1v3.83L22 7v8l-4-1.83V19H2V5h16z"></path></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24" viewBox="0 0 24 24" width="24" focusable="false" style="pointer-events: none; display: inherit; width: 100%; height: 100%;"><path d="M10 20h4c0 1.1-.9 2-2 2s-2-.9-2-2zm10-2.65V19H4v-1.65l2-1.88v-5.15C6 7.4 7.56 5.1 10 4.34v-.38c0-1.42 1.49-2.5 2.99-1.76.65.32 1.01 1.03 1.01 1.76v.39c2.44.75 4 3.06 4 5.98v5.15l2 1.87zm-1 .42-2-1.88v-5.47c0-2.47-1.19-4.36-3.13-5.1-1.26-.53-2.64-.5-3.84.03C8.15 6.11 7 7.99 7 10.42v5.47l-2 1.88V18h14v-.23z"></path></svg>
+        <img id="profil-logo" draggable="false" class="style-scope yt-img-shadow" alt="Image d'avatar" height="32" width="32" src="https://yt3.ggpht.com/yti/ANjgQV9u03p2QSy8eyEYEx46Rd1CP1S-uXoCZA24DKptdw=s88-c-k-c0x00ffffff-no-rj">
+      
+      </div>
+    </nav>
+
+<div class="div-filter-by-category flex-div"></div>
+
+    <div class="cards"></div>    
+  </body>
+  <footer>
+    
+  </footer>
+</html>
