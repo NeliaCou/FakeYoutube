@@ -45,6 +45,10 @@ nav {
   z-index: 10;
 }
 
+.nav-right {
+  gap: 20px;
+}
+
 .nav-right img {
   width: 25px;
   margin-right: 8px;
@@ -55,9 +59,9 @@ nav {
   width: 28px;
   border-radius: 50%;
   margin-left: 15px;
-  padding: 5px;
+  padding: 6px;
   object-fit: contain;
-  background-color: #e5e5e5;
+  background-color: #d9d9d98c;
 }
 
 input {
@@ -68,8 +72,11 @@ input {
 }
 
 .search-input {
-  border: 1px solid gray;
-  border-radius: 20px;
+  border: 2px solid #d9d9d9;
+  border-radius: 40px;
+  height: 37px;
+  width: 33em;
+  padding-left: 12px;
 }
 
 /* main */
@@ -138,14 +145,28 @@ input {
   padding-left: 12px;
 }
 
-.infoCard {
+.info-card {
   color: #666565eb;
   padding-left: 12px;
 }
 
+.magnifying-glass {
+  width: 40px;
+  height: 38px;
+  padding: 10px;
+  border-left: 1px solid #d9d9d98c;
+  background-color: #d9d9d929;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+input {
+  width: 100%;
+}
+
 /* Filter by category */
 
-.div-filter-by-category {
+.div-filter-by-category .flex-div {
   justify-content: center;
 }
 

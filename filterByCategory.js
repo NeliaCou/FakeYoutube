@@ -23,6 +23,8 @@ async function filterByCategory() {
     `;
   });
 
+  filterCards("");
+
   filterContainer.innerHTML = htmlContent;
 
   const filterCategories = document.querySelectorAll(".filter-by-category");
@@ -40,11 +42,18 @@ async function filterCards(selectedCategory) {
   const cardsContainer = document.querySelector(".cards");
   cardsContainer.innerHTML = "";
 
-  videos.youtubeVideo.forEach((video) => {
-    if (video.typeOfVideo === selectedCategory || video.typeOfVideo === null) {
+  if (!selectedCategory) {
+    console.log(videos.youtubeVideo);
+    videos.youtubeVideo.forEach((video) => {
       createVideoCards(video);
-    }
-  });
+    });
+  } else {
+    videos.youtubeVideo.forEach((video) => {
+      if (video.typeOfVideo === selectedCategory) {
+        createVideoCards(video);
+      }
+    });
+  }
 }
 
 filterByCategory();

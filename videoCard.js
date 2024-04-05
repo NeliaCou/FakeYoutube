@@ -46,12 +46,12 @@ export async function createVideoCards(video) {
   videoInfo.appendChild(titleLink);
 
   const creatorName = document.createElement("p");
-  creatorName.classList.add("infoCard");
+  creatorName.classList.add("info-card");
   creatorName.textContent = video.creator;
   videoInfo.appendChild(creatorName);
 
   const numberOfViews = document.createElement("p");
-  numberOfViews.classList.add("infoCard");
+  numberOfViews.classList.add("info-card");
   numberOfViews.textContent = video.viewNumber;
   videoInfo.appendChild(numberOfViews);
 
