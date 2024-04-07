@@ -14,6 +14,14 @@ searchInput.setAttribute("id", "searchInput");
 searchInput.setAttribute("type", "text");
 searchInput.setAttribute("placeholder", "Search");
 
+searchInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    const searchTerm = searchInput.value;
+    inputFilter(searchTerm);
+    console.log("Recherche :", searchTerm);
+  }
+});
+
 const searchButton = document.createElement("img");
 searchButton.setAttribute("src", "assets/navbar/magnifyingGlass.png");
 searchButton.setAttribute("id", "searchButton");
