@@ -18,9 +18,10 @@ async function filterByCategory() {
   let htmlContent = "";
 
   categories.forEach((category) => {
-    htmlContent += `
-      <p class="filter-by-category">${category}</p>
-    `;
+    const filterCategory = document.createElement("p");
+    filterCategory.classList.add("filter-by-category");
+    filterCategory.textContent = category;
+    htmlContent += filterCategory.outerHTML;
   });
 
   filterCards("");
