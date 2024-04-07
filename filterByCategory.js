@@ -43,7 +43,6 @@ async function filterCards(selectedCategory) {
   cardsContainer.innerHTML = "";
 
   if (!selectedCategory) {
-    console.log(videos.youtubeVideo);
     videos.youtubeVideo.forEach((video) => {
       createVideoCards(video);
     });
