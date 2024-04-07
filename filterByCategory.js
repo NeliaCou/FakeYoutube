@@ -9,6 +9,11 @@ async function filterByCategory() {
 
   const categories = [];
 
+  const allFilter = document.createElement("p");
+  allFilter.classList.add("filter-by-category");
+  allFilter.textContent = "All";
+  filterContainer.appendChild(allFilter);
+
   typeOfVideo.youtubeVideo.forEach((videoCategory) => {
     if (!categories.includes(videoCategory.typeOfVideo)) {
       categories.push(videoCategory.typeOfVideo);
@@ -26,13 +31,17 @@ async function filterByCategory() {
 
   filterCards("");
 
-  filterContainer.innerHTML = htmlContent;
+  filterContainer.innerHTML += htmlContent;
 
   const filterCategories = document.querySelectorAll(".filter-by-category");
   filterCategories.forEach((category) => {
     category.addEventListener("click", () => {
       filterCards(category.textContent);
     });
+  });
+
+  allFilter.addEventListener("click", () => {
+    filterCards("");
   });
 }
 
@@ -43,17 +52,15 @@ async function filterCards(selectedCategory) {
   const cardsContainer = document.querySelector(".cards");
   cardsContainer.innerHTML = "";
 
-  if (!selectedCategory) {
-    videos.youtubeVideo.forEach((video) => {
+  videos.youtubeVideo.forEach((video) => {
+    if (
+      !selectedCategory ||
+      selectedCategory === "All" ||
+      video.typeOfVideo === selectedCategory
+    ) {
       createVideoCards(video);
-    });
-  } else {
-    videos.youtubeVideo.forEach((video) => {
-      if (video.typeOfVideo === selectedCategory) {
-        createVideoCards(video);
-      }
-    });
-  }
+    }
+  });
 }
 
 filterByCategory();
