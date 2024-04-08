@@ -1,4 +1,7 @@
 import { createVideoCards } from "./videoCard.js";
+import { getData } from "./getData.js";
+
+const data = await getData();
 
 const navMiddle = document.createElement("div");
 navMiddle.classList.add("nav-middle", "flex-div");
@@ -9,24 +12,33 @@ searchBox.classList.add("search-box", "flex-div");
 const searchInputContainer = document.createElement("div");
 searchInputContainer.classList.add("search-input", "flex-div");
 
-const searchInput = document.createElement("input");
-searchInput.setAttribute("id", "searchInput");
-searchInput.setAttribute("type", "text");
-searchInput.setAttribute("placeholder", "Search");
+function createSearchInput() {
+  const searchInput = document.createElement("input");
+  searchInput.setAttribute("id", "searchInput");
+  searchInput.setAttribute("type", "text");
+  searchInput.setAttribute("placeholder", "Search");
 
-searchInput.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    const searchTerm = searchInput.value;
-    inputFilter(searchTerm);
-    console.log("Recherche :", searchTerm);
-  }
-});
+  searchInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      const searchTerm = searchInput.value;
+      filterVideosByTitle(searchTerm);
+    }
+  });
+  return searchInput;
+}
 
-const searchButton = document.createElement("img");
-searchButton.setAttribute("src", "assets/navbar/magnifyingGlass.png");
-searchButton.setAttribute("id", "searchButton");
-searchButton.classList.add("magnifying-glass");
-searchButton.setAttribute("alt", "Magnifying glass");
+const searchInput = createSearchInput();
+
+function createSearchButton() {
+  const searchButton = document.createElement("img");
+  searchButton.setAttribute("src", "assets/navbar/magnifyingGlass.png");
+  searchButton.setAttribute("id", "searchButton");
+  searchButton.classList.add("magnifying-glass");
+  searchButton.setAttribute("alt", "Magnifying glass");
+  return searchButton;
+}
+
+const searchButton = createSearchButton();
 
 searchInputContainer.appendChild(searchInput);
 searchInputContainer.appendChild(searchButton);
@@ -47,27 +59,25 @@ navMiddleDiv.replaceWith(navMiddle);
 
 searchButton.addEventListener("click", function () {
   const searchTerm = searchInput.value;
-  inputFilter(searchTerm);
+  filterVideosByTitle(searchTerm);
   console.log("Recherche :", searchTerm);
 });
 
-async function inputFilter(searchTerm) {
-  const response = await fetch("./data.json");
-  const data = await response.json();
-
-  const videos = data.youtubeVideo;
-
-  console.log(videos);
-
-  const filteredVideos = videos.filter((video) => {
-    return video.title.toLowerCase().includes(searchTerm);
-    //   || video.creator.toLowerCase().includes(searchTerm)
-  });
-
+async function filterVideosByTitle(searchTerm) {
   const cardsContainer = document.querySelector(".cards");
   cardsContainer.innerHTML = "";
 
-  filteredVideos.forEach((video) => {
-    createVideoCards(video);
+  const videos = data.youtubeVideo;
+
+  const filteredVideos = videos.filter((video) => {
+    return video.title.toLowerCase().includes(searchTerm);
   });
+
+  injectVideos(filteredVideos);
+
+  function injectVideos(filteredVideos) {
+    filteredVideos.forEach((video) => {
+      createVideoCards(video);
+    });
+  }
 }

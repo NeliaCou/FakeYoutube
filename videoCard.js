@@ -11,47 +11,44 @@ export async function createVideoCards(video) {
     });
   }
 
+  function createElement(node, className) {
+    const element = document.createElement(node);
+    element.classList.add(className);
+    return element;
+  }
+
   const cardsContainer = document.querySelector(".cards");
 
-  const card = document.createElement("div");
-  card.classList.add("card");
+  const card = createElement("div", "card");
 
-  const cardHeader = document.createElement("div");
-  cardHeader.classList.add("card-header");
+  const cardHeader = createElement("div", "card-header");
 
-  const thumbnailImg = document.createElement("img");
+  const thumbnailImg = createElement("img", "card-img");
   thumbnailImg.src = video.thumbnail;
-  thumbnailImg.classList.add("card-img");
   thumbnailImg.alt = "video image";
   thumbnailImg.setAttribute("data-video-url", video.linkToVideo);
   cardHeader.appendChild(thumbnailImg);
 
-  const flexDiv = document.createElement("div");
-  flexDiv.classList.add("flex-div");
+  const flexDiv = createElement("div", "flex-div");
 
-  const youtuberIcon = document.createElement("img");
+  const youtuberIcon = createElement("img", "youtuber-logo");
   youtuberIcon.src = video.profileImage;
-  youtuberIcon.classList.add("youtuber-logo");
   youtuberIcon.alt = "youtuber icon";
   flexDiv.appendChild(youtuberIcon);
 
-  const videoInfo = document.createElement("div");
-  videoInfo.classList.add("video-info");
+  const videoInfo = createElement("div", "video-info");
 
-  const titleLink = document.createElement("a");
+  const titleLink = createElement("a", "chanel-title");
   titleLink.href = video.linkToVideo;
   titleLink.target = "_blank";
-  titleLink.classList.add("chanel-title");
   titleLink.textContent = video.title;
   videoInfo.appendChild(titleLink);
 
-  const creatorName = document.createElement("p");
-  creatorName.classList.add("info-card");
+  const creatorName = createElement("p", "info-card");
   creatorName.textContent = video.creator;
   videoInfo.appendChild(creatorName);
 
-  const numberOfViews = document.createElement("p");
-  numberOfViews.classList.add("info-card");
+  const numberOfViews = createElement("p", "info-card");
   numberOfViews.textContent = video.viewNumber;
   videoInfo.appendChild(numberOfViews);
 
