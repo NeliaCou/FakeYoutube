@@ -1,16 +1,22 @@
 import { createVideoCards } from "./videoCard.js";
+import { getData } from "./getData.js";
 
 async function filterByCategory() {
-  const response = await fetch("./data.json");
-  const typeOfVideo = await response.json();
+  const typeOfVideo = await getData();
+  console.log(typeOfVideo);
 
   const filterContainer = document.querySelector(".div-filter-by-category");
   filterContainer.classList.add("flex-div");
 
+  function createElement(node, className) {
+    const element = document.createElement(node);
+    element.classList.add(className);
+    return element;
+  }
+
   const categories = [];
 
-  const allFilter = document.createElement("p");
-  allFilter.classList.add("filter-by-category");
+  const allFilter = createElement("p", "filter-by-category");
   allFilter.textContent = "All";
   filterContainer.appendChild(allFilter);
 
@@ -23,8 +29,7 @@ async function filterByCategory() {
   let htmlContent = "";
 
   categories.forEach((category) => {
-    const filterCategory = document.createElement("p");
-    filterCategory.classList.add("filter-by-category");
+    const filterCategory = createElement("p", "filter-by-category");
     filterCategory.textContent = category;
     htmlContent += filterCategory.outerHTML;
   });
@@ -46,8 +51,7 @@ async function filterByCategory() {
 }
 
 async function filterCards(selectedCategory) {
-  const response = await fetch("./data.json");
-  const videos = await response.json();
+  const videos = await getData();
 
   const cardsContainer = document.querySelector(".cards");
   cardsContainer.innerHTML = "";
