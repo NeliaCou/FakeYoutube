@@ -3,20 +3,36 @@ import { getData } from "./getData.js";
 
 const data = await getData();
 
-const navMiddle = document.createElement("div");
-navMiddle.classList.add("nav-middle", "flex-div");
+function createElement(node, className1, className2) {
+  const element = document.createElement(node);
+  element.classList.add(className1, className2);
+  return element;
+}
 
-const searchBox = document.createElement("div");
-searchBox.classList.add("search-box", "flex-div");
+function setAttribute(element, attributes) {
+  for (let attribute of attributes) {
+    for (let key in attribute) {
+      element.setAttribute(key, attribute[key]);
+    }
+  }
+}
 
-const searchInputContainer = document.createElement("div");
-searchInputContainer.classList.add("search-input", "flex-div");
+const navFilterVideo = createElement("div", "nav-middle", "flex-div");
+
+const searchBox = createElement("div", "search-box", "flex-div");
+
+const searchInputContainer = createElement("div", "search-input", "flex-div");
 
 function createSearchInput() {
   const searchInput = document.createElement("input");
-  searchInput.setAttribute("id", "searchInput");
-  searchInput.setAttribute("type", "text");
-  searchInput.setAttribute("placeholder", "Search");
+  setAttribute(searchInput, [
+    { id: "searchInput" },
+    { type: "text" },
+    { placeholder: "Search" },
+  ]);
+  // searchInput.setAttribute("id", "searchInput");
+  // searchInput.setAttribute("type", "text");
+  // searchInput.setAttribute("placeholder", "Search");
 
   searchInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
@@ -31,10 +47,12 @@ const searchInput = createSearchInput();
 
 function createSearchButton() {
   const searchButton = document.createElement("img");
-  searchButton.setAttribute("src", "assets/navbar/magnifyingGlass.png");
-  searchButton.setAttribute("id", "searchButton");
+  setAttribute(searchButton, [
+    { src: "assets/navbar/magnifyingGlass.png" },
+    { id: "searchButton" },
+    { alt: "Magnifying glass" },
+  ]);
   searchButton.classList.add("magnifying-glass");
-  searchButton.setAttribute("alt", "Magnifying glass");
   return searchButton;
 }
 
@@ -44,18 +62,20 @@ searchInputContainer.appendChild(searchInput);
 searchInputContainer.appendChild(searchButton);
 
 const voiceSearch = document.createElement("img");
-voiceSearch.setAttribute("src", "assets/navbar/voice-search.png");
-voiceSearch.setAttribute("id", "micro");
-voiceSearch.setAttribute("alt", "voice search logo");
+setAttribute(voiceSearch, [
+  { src: "assets/navbar/voice-search.png" },
+  { id: "micro" },
+  { alt: "voice search logo" },
+]);
 
 searchBox.appendChild(searchInputContainer);
 searchBox.appendChild(voiceSearch);
 
-navMiddle.appendChild(searchBox);
+navFilterVideo.appendChild(searchBox);
 
-const navMiddleDiv = document.querySelector(".nav-middle");
+const navFilterVideoDiv = document.querySelector(".nav-middle");
 
-navMiddleDiv.replaceWith(navMiddle);
+navFilterVideoDiv.replaceWith(navFilterVideo);
 
 searchButton.addEventListener("click", function () {
   const searchTerm = searchInput.value;
